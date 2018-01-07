@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>shoppingcart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" crossorigin="anonymous">
+	<style type="text/css">
+		
+		html, body {
+			width:100%;
+			height:100%;
+		}
+
+		* {
+			padding:0;
+			margin:0;
+		}
+
+		header {
+			position:fixed;
+			top:0;
+			width:100%;
+			background-color: white;
+		}
+
+		main {
+			margin-top:66px;
+		}
+
+
+
+		#navigation	{
+			width:80%;
+			/*border: 1px solid black;*/
+			font-family: 'Josefin Sans',Arial,sans-serif;
+			display:flex;
+			/*border:1px solid red;*/
+			align-items: center;
+			
+		}
+
+
+		nav {
+			height:66px;
+			display:flex;
+			flex:2;
+			align-items: center;
+			justify-content: space-between;
+
+		}
+
+		#logoarea {
+			display:flex;
+			/*border: 1px solid black;*/
+			align-items: center;
+
+		}
+		
+		#logolink {
+			font-family:Arial,sans-serif;
+			font-size:20px;
+			font-weight: 500;
+			margin:0;
+			display:inline-block;
+			color:black;
+			transition: all 0.3s;	
+			/*border:1px solid green;*/
+		}
+
+		#logolink:hover {
+			color:grey;
+			cursor:pointer;
+		}
+			
+
+		ul {
+			/*flex:1;*/
+			display:flex;
+			list-style-type: none;
+			margin:0;
+			align-items: center;
+			/*justify-content: space-around;*/
+		}
+
+		li{
+			font-size: 12px;
+			font-weight: 600;
+			padding:0 20px 0 20px;
+			transition: all 0.3s;			
+		}
+
+		li:hover{
+			color:grey;
+			cursor: pointer
+		}
+
+		#cartlink {
+			/*border:1px solid yellow;*/
+			width:25px;
+			height:25px;
+			display:inline-block;
+			background-image: url(cart-icon.png);
+			background-size: 50px;
+			background-position: center;
+		}
+
+
+		/*content area*/
+
+		.content {
+			width:100%;
+			/*border:2px solid green;*/
+
+		}
+
+		#banner > img {
+			width:100%;
+			height:auto;
+		}
+
+		#linkshizzl {
+			font-size: 13px;
+			margin: 13px 0 13px 0;
+			color:black;
+		}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<div id="navigation">
+				<nav>
+					<div id="logoarea">
+						<a href=""><p id="logolink">KITSCHKRIEG</p></a>
+					</div>
+					<ul>
+						<li>HOME</li>
+						<li>MUSIC</li>
+						<li>LOOKBOOK</li>
+						<li>SHOP</li>
+						<li>ABOUT</li>
+						<li><a href=""><div id="cartlink"></div></a></li>
+					</ul>
+					
+				</nav>
+			</div>
+		
+		</header>
+
+		<main>
+				<div id="banner">
+					<img src="Shop_Banner.jpg">
+				</div>
+			<div class="content">
+				<div id="linkshizzl">
+					<a href="#">Startseite</a>
+					<span>/ SHOP</span>
+				</div>
+					<div id="productarea"></div>
+
+			</div>
+		</main>
+
+
+		<footer></footer>
+
+		<script type="text/javascript">
+			
+			let products = [
+
+				{
+					name: 'TRETTMANN #DIY KASSETTE',
+					price: 10.00,
+					pic: 'DIY-TAPE.jpg',
+					available: 450,
+				},
+
+				{
+					name: 'TRETTMANN #DIY FANBOX',
+					price: 50.00,
+					pic: 'FANBOX.jpg',
+					available: 1500,
+				},
+
+				{
+					name: 'TRETTMANN #DIY COMPACT DISC (CD)',
+					price: 50.00,
+					pic: 'cd.jpg',
+					available: 5000,
+				},
+
+				{
+					name: 'TRETTMANN #DIY VINYL',
+					price: 15.00,
+					pic: 'DIY_VINYL.jpg',
+					available: 1500,
+				},
+				]			
+
+
+			// add div for every product in array
+			
+
+			for (let i = 0; i < products.length; i++) {
+				
+				// product div erstellen
+
+				let shop = document.querySelector('#productarea');
+				let product = document.createElement('div');
+				product.setAttribute('class', 'product');
+				product.setAttribute('id', `${(products[i].name.replace(/\s+|#/g, ''))}`)
+
+				// product div einfügen
+
+				shop.appendChild(product);
+
+				// name price pic available divs hinzufügen
+
+				for (let prop in products[i] ) {
+					// console.log(products[i][prop])
+
+					let prodDiv = document.createElement('div');
+					prodDiv.setAttribute('class', `${prop}`);
+					product.appendChild(prodDiv)
+				
+
+					// inhalte einfüllen
+
+					let nameContent = document.createTextNode(`${products[i].name}`);
+					let nameDiv = document.getElementById(`${(products[i].name.replace(/\s+|#/g, ''))}`);
+
+					nameDiv.appendChild(nameContent);
+
+					
+				}
+
+
+				
+
+
+
+
+
+			}
+
+
+
+
+
+		</script>
+	</div>
+</body>
+
+</html>

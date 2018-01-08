@@ -124,8 +124,30 @@
 			color:black;
 		}
 
+		/*product classes*/
 
+		.productarea {
+			display:flex;
+			flex-flow: 
+		}
 
+		.product {
+			border:1px solid green;
+			display:inline-block;
+			padding:5px;
+			margin:5px;
+		}
+
+		.pic {
+			width:100px;
+			height:100px;
+		}
+
+		.pic img{
+			width:100%;
+			height:100%;
+			
+		}
 
 
 	</style>
@@ -227,17 +249,37 @@
 					let prodDiv = document.createElement('div');
 					prodDiv.setAttribute('class', `${prop}`);
 					product.appendChild(prodDiv)
-					
-					console.log(prop)
-					// inhalte einfüllen
-
-					let nameContent = document.createTextNode(`${products[i].name}`);
-					let nameDiv = document.getElementById(`${(products[i].name.replace(/\s+|#/g, ''))}`);
-
-					nameDiv.appendChild(nameContent);
-
-					
 				}
+					
+					
+				// inhalte einfüllen
+
+				// name
+
+				let nameContent = document.createTextNode(`${products[i].name}`);
+				let nameDiv = document.getElementById(`${(products[i].name.replace(/\s+|#/g, ''))}`);
+
+				nameDiv.querySelector(".name").appendChild(nameContent);
+
+				// price
+				
+				let priceContent = document.createTextNode(`€ ${products[i].price},-`);
+				let priceDiv = document.getElementById(`${products[i].name.replace(/\s+|#/g, '')}`);
+
+				priceDiv.querySelector(".price").appendChild(priceContent);
+
+				// image
+
+				let imgContent = document.createElement('img')
+
+				imgContent.setAttribute('src', `${products[i].pic}`);
+
+				let imgDiv = document.getElementById(`${products[i].name.replace(/\s+|#/g, '')}`).querySelector(".pic");
+
+				imgDiv.appendChild(imgContent);
+
+
+					
 
 
 				
